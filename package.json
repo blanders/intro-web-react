@@ -15,6 +15,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "s3-deploy": "aws s3 sync build/ s3://intro-web-react",
+    "invalidate": "aws cloudfront create-invalidation --distribution-id EI3NIKSJ6SV8B --paths '/*'",
+    "deploy": "npm run build && npm run s3-deploy && npm run invalidate",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
